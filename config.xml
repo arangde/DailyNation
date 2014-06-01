@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.dailynation.nationmediapad" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+	<name>DailyNation</name>
+	<description>
+		Daily Nation Mobile News
+	</description>
+	<author email="pm@marcellus.tv" href="http://mobile.nation.ke">
+		pm@marcellus.tv
+	</author>
+	<feature name="http://api.phonegap.com/1.0/device" />
+	<access origin="*" />
+	
+	<preference name="fullscreen" value="true" />
+	<preference name="webviewbounce" value="false" />
+</widget>

@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+	<title>Daily Nation</title>
+
+	<!-- CSS Stylesheets -->
+	<!-- Imported Libraries -->
+	<!-- 	JQuery Mobile -->
+	<link rel="stylesheet" type="text/css" href="lib/jquery.mobile/jquery.mobile-1.3.2.min.css" />
+	<!--	Fotorama -->
+	<link rel="stylesheet" type="text/css" href="lib/fotorama/fotorama.css">
+
+	<!-- Application Style Sheet -->
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+
+
+	<!-- Java Scripts -->
+	<!-- Cordova -->
+	<script type="text/javascript" src="cordova.js"></script>
+
+	<!-- Imported Libraries -->
+	<!-- 	JQuery -->
+	<script src="lib/jquery/jquery-1.10.2.min.js"></script>
+	<!--<script src="lib/jquery/jquery-migrate-1.2.1.js"></script>-->
+	<!-- 	JQuery Mobile -->
+	<script src="lib/jquery.mobile/jquery.mobile-1.3.2.min.js"></script>
+	<!-- 	iScroll -->
+	<script src="lib/iscroll/iscroll-4.2.5.js"></script>
+	<!--	Fotorama -->
+	<script src="lib/fotorama/fotorama.uncompressed.js"></script>
+
+	<!-- Utils -->
+	<script src="js/lib/util.js"></script>
+	<script src="js/lib/util.ajax.js"></script>
+	<script src="js/lib/util.xml.js"></script>
+	<script src="js/lib/util.ui.js"></script>
+	<!-- Application -->
+	<script src="js/data.js"></script>
+	<script src="js/app.js"></script>
+	<!-- Initialize -->
+	<script src="js/lib/controller.js"></script>
+	
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+
+
+</head>
+
+<body>
+
+<!-- Page Home -->
+<div id="page-home" data-role="page">
+
+	<!-- Header -->
+	<div data-role="header" align="center">
+		<div class="logo"></div>
+        		<div class="date"></div>
+
+		<div class="time"><font class='title'>LAST UPDATE: </font><font class='value'></font></div>
+		<div class="border"></div>
+	</div>
+
+	<!-- Content -->
+	<div data-role="content">
+		<div class="articles">
+		</div>
+	</div>
+
+	<div data-role="bbar" class="ui-bbar">
+		<section class="col1">
+			<div class="circularContent">
+			<h3 class="title">Most popular articles</h3>
+				<article class="article">
+					<div class="content">
+						<p>These are rotating popular articles</p>
+					</div>
+				</article>
+				<article class="article">
+					<div class="content">
+						<p>These are rotating popular articles</p>
+					</div>
+				</article>
+			</div>
+			<div class="arrows"><span class="left-arrow"></span><span class="right-arrow"></span></div>
+		</section>
+		<section class="col2">
+			<div class="circularContent">
+			<h4 class="title">Trending Articles</h4>
+				<article class="article">
+					<div class="content">
+						<p>These are rotating trending articles</p>
+					</div>
+				</article>
+			</div>
+			<div class="arrows"><span class="left-arrow"></span><span class="right-arrow"></span></div>
+		</section>
+	</div>
+
+	<div data-role="footer" data-theme="a">
+		<a class="button_sections" href="#popup-sections" data-rel="popup">
+		SECTIONS
+		</a>
+		<div id="admob">
+			Admob banner here
+		</div>
+		<a class="button_settings" href="#page-settings">
+			SETTINGS
+		</a>
+	</div>
+
+	<div data-role="popup" id="popup-sections" data-theme="c" class="popup-sections ui-corner-all">
+		<div class="frame" align="center">
+			<div class="title">SECTIONS</div>
+			<div class="list-container">
+				<div class="list"><div></div></div>
+				<div class="sub-list-container"><div>
+					<div class="category-title"></div>
+					<div class="sub-list"><div></div></div>
+				</div></div>
+			</div>
+			<div class="update">Update Now</div>
+			<div style="width: 1px; height: 0.5rem"></div>
+		</div>
+	</div>
+</div>
+
+<!-- Page Article -->
+<div id="page-article" data-role="page">
+
+	<!-- Main Header -->
+	<div data-role="header" align="center">
+		<div class="logo"></div>
+        		<div class="date"></div>
+
+		<div class="time"><font class='title'>LAST UPDATE: </font><font class='value'></font></div>
+		<div class="border"></div>
+	</div>
+	<!-- Header -->
+	<div data-role="header" align="center" data-theme="c">
+		<div class="categoryy">&nbsp;</div> 
+
+		<div class="button fontsize"></div>
+		<div class="button share"></div>
+		<div class="button back"></div>
+	</div>
+
+	<!-- Content -->
+	<div data-role="content">
+		<div class="contents">
+			<div class="article">
+				<div class="titlee"></div>
+				<div class="split"></div>
+				<div>
+					<font class="author"></font>
+					<font class="datee"></font>
+				</div>
+				<BR>
+				<table border="0" style="border-collapse: collapse" cellpadding="0" cellspacing="0">
+					<tr>
+						<td valign="top">
+							<div class="section1 col content"></div>
+						</td>
+						<td valign="top">
+							<div class="col">
+								<div class="photo" align="center">
+									<img>
+									<BR>
+									<div class="caption"></div>
+								</div>
+								<div class="section2 content">
+								</div>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<BR>
+				<BR>
+				<BR>
+				<BR>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<div data-role="footer" data-theme="a">
+		<a class="button_sections" href="#popup-sections" data-rel="popup">
+		SECTIONS
+		</a>
+		<div id="admob">
+			Admob banner here
+		</div>
+		<a class="button_settings" href="#page-settings">
+			SETTINGS
+		</a>
+	</div>
+
+	<div data-role="popup" id="popup-sections" data-theme="c" class="popup-sections ui-corner-all">
+		<div class="frame" align="center">
+			<div class="title">SECTIONS</div>
+			<div class="list-container">
+				<div class="list"><div></div></div>
+				<div class="sub-list-container"><div>
+					<div class="category-title"></div>
+					<div class="sub-list"><div></div></div>
+				</div></div>
+			</div>
+			<div class="update">Update Now</div>
+			<div style="width: 1px; height: 0.5rem"></div>
+		</div>
+	</div>
+
+	<div data-role="popup" id="popup-fontsize">
+		<ul data-role="listview" data-inset="true" style="min-width:175px;" data-theme="d">
+			<li data-role="divider" data-theme="a">
+				Change the font size
+			</li>
+			<li>
+				<a href="#" id='small'>Small</a>
+			</li>
+			<li>
+				<a href="#" id='medium'>Medium</a>
+			</li>
+			<li>
+				<a href="#" id='big'>Large</a>
+			</li>
+		</ul>
+	</div>
+	<div data-role="popup" id="popup-share">
+		<ul data-role="listview" data-inset="true" style="min-width:175px;" data-theme="d">
+			<li data-role="divider" data-theme="a">
+				Share this article
+			</li>
+			<li>
+				<a href="#" id='facebook'><div>Post on Facebook</div></a>
+			</li>
+			<li>
+				<a href="#" id='twitter'><div>Tweet this article</div></a>
+			</li>
+			<li>
+				<a href="#" id='google'><div>Share on G+</div></a>
+			</li>
+			<li>
+				<a href="#" id='linkedin'><div>Share on LinkedIn</div></a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+
+<!-- Page Photo -->
+<div id="page-photo" data-role="page">
+	<!-- Main Header -->
+	
+	<div data-role="header" align="center">
+		<div class="logo"></div>
+        		<div class="date"></div>
+
+		<div class="time"><font class='title'>LAST UPDATE: </font><font class='value'></font></div>
+		<div class="border"></div>
+	</div>
+
+	<!-- Video Header -->
+	<div id="page-video-header" data-role="header" align="center" data-theme="a">
+		<div class="title">Photo Gallery</div>
+	</div>
+
+	<!-- Content -->
+	<div data-role="content">
+		<div class="contents">
+		</div>
+		<div class="info">
+			<div class="title">
+			</div>
+			<div class="description">
+			</div>
+		</div>
+	</div>
+
+	<div data-role="footer" data-theme="a">
+		<a class="button_sections" href="#popup-sections" data-rel="popup">
+		SECTIONS
+		</a>
+		<div id="admob">
+			Admob banner here
+		</div>
+		<a class="button_settings" href="#page-settings">
+			SETTINGS
+		</a>
+	</div>
+
+	<div data-role="popup" id="popup-sections" data-theme="c" class="popup-sections ui-corner-all">
+		<div class="frame" align="center">
+			<div class="title">SECTIONS</div>
+			<div class="list-container">
+				<div class="list"><div></div></div>
+				<div class="sub-list-container"><div>
+					<div class="category-title"></div>
+					<div class="sub-list"><div></div></div>
+				</div></div>
+			</div>
+			<div class="update">Update Now</div>
+			<div style="width: 1px; height: 0.5rem"></div>
+		</div>
+	</div>
+</div>
+
+<!-- Page Video -->
+<div id="page-video" data-role="page">
+
+	<!-- Main Header -->
+    <!-- Header -->
+	<div data-role="header" align="center">
+		<div class="logo"></div>
+        		<div class="date"></div>
+
+		<div class="time"><font class='title'>LAST UPDATE: </font><font class='value'></font></div>
+		<div class="border"></div>
+	</div>
+    
+	
+	<!-- Video Header -->
+	<div id="page-video-header" data-role="header" align="center" data-theme="a">
+		<div class="title">Video Gallery</div>
+	</div>
+
+	<!-- Content -->
+	<div id="page-video-body" data-role="content">
+		<div id="page-video-contents">
+		</div>
+		<div class="empty">None</div>
+	</div>
+	<div id="page-video-footer" data-role="footer" data-theme="a">
+	</div>
+
+	<div data-role="popup" id="popup-videosections" data-theme="c" class="popup-sections ui-corner-all">
+		<div class="frame" align="center">
+			<div class="title">SECTIONS</div>
+			<div class="list"><div></div></div>
+			<div class="update">Update Now</div>
+			<div style="width: 1px; height: 0.5rem"></div>
+		</div>
+	</div>
+
+	<div data-role="footer" data-theme="a">
+		<a class="button_sections" href="#popup-sections" data-rel="popup">
+		SECTIONS
+		</a>
+		<div id="admob">
+			Admob banner here
+		</div>
+		<a class="button_settings" href="#page-settings">
+			SETTINGS
+		</a>
+	</div>
+
+	<div data-role="popup" id="popup-sections" data-theme="c" class="popup-sections ui-corner-all">
+		<div class="frame" align="center">
+			<div class="title">SECTIONS</div>
+			<div class="list-container">
+				<div class="list"><div></div></div>
+				<div class="sub-list-container"><div>
+					<div class="category-title"></div>
+					<div class="sub-list"><div></div></div>
+				</div></div>
+			</div>
+			<div class="update">Update Now</div>
+			<div style="width: 1px; height: 0.5rem"></div>
+		</div>
+	</div>
+</div>
+
+<!-- Page Setting -->
+<div id="page-settings" class="page-settings" data-role="page" data-theme="c">
+	<div data-role="header"  data-theme="c">
+		<h1>App Settings</h1>
+		<a href="#page-home" data-transition="fade" data-direction="reverse" data-role="button" data-icon="home" data-iconpos="left" data-inline="true" data-theme="c">Back</a>
+	</div>
+	<div data-role="content">
+		<div>
+			<div>
+				<ul data-role="listview" data-inset="true" data-theme="c">
+					<li>
+						<a data-transition="fade" data-direction="reverse" href="#page-settings-categories">Categories</a>
+					</li>
+				</ul>
+				<span>Settings</span>
+				<ul data-role="listview" data-inset="true">
+					<li>
+						<a data-transition="fade" data-direction="reverse"  href="#page-settings-refreshinterval">Refresh Interval</a>
+					</li>
+					<li>
+						<a data-transition="fade" data-direction="reverse"  href="#page-settings-textsize">Text Size</a>
+					</li>
+				</ul>
+				<span>Info</span>
+				<ul data-role="listview" data-inset="true">
+					<li>
+						<a href="#page-aboutus">About Us</a>
+					</li>
+					<li>
+						<a href="#page-terms">Terms of Use</a>
+					</li>
+					<li>
+						<a href="#page-privacy">Privacy policy</a>
+					</li>
+				</ul>
+				<!--
+				<span class="settings-title">Clear saved favorites</span>
+				<ul data-role="listview" data-inset="true">
+					<li>
+						<a href="#page-aboutus">Clear</a>
+					</li>
+				</ul>
+				-->
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Page - Settings / Refresh Interval -->
+<div data-role="page" id="page-settings-refreshinterval" data-role="fieldcontain">
+	<div data-role="header" data-role="fieldcontain" data-theme="c">
+		<h1>Auto Refresh</h1>
+		<a href="#page-settings" data-transition="fade" data-direction="reverse"  data-role="button" data-icon="arrow-l" data-iconpos="left" data-inline="true" data-role="fieldcontain" data-theme="c">Back</a>
+	</div>
+	<div data-role="content">
+		<div>
+			<div class="refresh-interval-block">
+				<fieldset data-role="controlgroup" data-theme="c">
+					<input type="radio" name="refreshinterval" id="radio-choice-1" value="choice-1" checked="checked">
+					<label for="radio-choice-1">Every Hour</label>
+					<input type="radio" name="refreshinterval" id="radio-choice-2" value="choice-2">
+					<label for="radio-choice-2">Every 30 minutes</label>
+					<input type="radio" name="refreshinterval" id="radio-choice-3" value="choice-3">
+					<label for="radio-choice-3">Every 15 minutes</label>
+					<input type="radio" name="refreshinterval" id="radio-choice-4" value="choice-4">
+					<label for="radio-choice-4">Every 5 minutes</label>
+					<input type="radio" name="refreshinterval" id="radio-choice-5" value="choice-5">
+					<label for="radio-choice-5">Off</label>
+				</fieldset>
+				<div class="help-text">
+					The auto refresh option reloads your app automatically to get the latest information.
+					<br/>
+					<br/>
+					If you prefer to refresh your app manually, you can turn this feature off.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Page - Settings / Text Size -->
+<div data-role="page" id="page-settings-textsize" data-theme="c">
+	<div data-role="header" data-theme="c">
+		<h1>Font size</h1>
+		<a href="#page-settings" data-transition="fade" data-direction="reverse"  data-role="button" data-icon="arrow-l" data-iconpos="left" data-inline="true" data-theme="c">Back</a>
+	</div>
+	<div data-role="content">
+		<div>
+			<div class="refresh-interval-block">
+				<fieldset data-role="controlgroup" data-theme="c">
+					<input type="radio" name="textsize" id="textsize-radio-choice-1" value="choice-1" checked="checked">
+					<label for="textsize-radio-choice-1">Small</label>
+					<input type="radio" name="textsize" id="textsize-radio-choice-2" value="choice-2">
+					<label for="textsize-radio-choice-2">Normal</label>
+					<input type="radio" name="textsize" id="textsize-radio-choice-3" value="choice-3">
+					<label for="textsize-radio-choice-3">Large</label>
+					<input type="radio" name="textsize" id="textsize-radio-choice-4" value="choice-4">
+					<label for="textsize-radio-choice-4">Huge</label>
+				</fieldset>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Page - About us -->
+<div data-role="page" id="page-aboutus" data-theme="c">
+	<div data-role="header" data-theme="c">
+		<h1>About us</h1>
+		<a href="#page-settings" data-transition="fade" data-direction="reverse" data-role="button" data-icon="arrow-l" data-iconpos="left" data-inline="true" data-theme="c">Back</a>
+	</div>
+	<div data-role="content">
+		<div class="wrapper">
+			<div>
+				<div class="help-text">
+					<center><div class="page-aboutus-logo"><img src="img/logo.png" width="90%"></div></center>
+					The Daily Nation is Kenya's leading newspaper and is a product of Nation Media Group (NMG) Limited.
+					<br/>
+					<br/>
+					NMG, founded by His Highness the Aga Khan in 1959, has become the largest independent media house in East and Central Africa. It has been quoted on the Nairobi Stock Exchange since the early 1970s.
+					<br/>
+					<br/>
+					As the leading multi-media house in the East African region, it has print as well as electronic media and the digital platforms which attracts a regular readership quite unparalleled in the region.
+					<br/>
+					<br/>
+					On the financial front, the Group’s performance over the years has been outstanding even in the leaner economic periods in the country and shows continuous growth and profits for the company as well as the shareholders.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Page - Provacy Policy -->
+<div data-role="page" id="page-privacy" data-theme="c">
+	<div data-role="header" data-theme="c">
+		<h1>Privacy Policy</h1>
+		<a href="#page-settings" data-transition="fade" data-direction="reverse" data-role="button" data-icon="arrow-l" data-iconpos="left" data-inline="true" data-theme="c">Back</a>
+	</div>
+	<div data-role="content">
+		<div class="wrapper">
+			<div>
+				<div class="help-text">
+					<div><p><strong><span class="headered">What does Nation Media Group do with the information it gathers/tracks?</span></strong></p><p><span class="headered">Statistical Analysis and Banner Advertising:</span> NMG websites may perform statistical analyses of user behaviour in order to measure interest in the various areas of our site (for product development purposes) and to inform advertisers as to how many consumers have seen or "clicked" their advertising banners. Personal information about you as an individual subscriber will not be provided to any third party without your consent, except under the circumstances described in Compliance with Legal Process below.</p><p><strong><span class="headered">Compliance with Legal Process</span></strong><br>We may disclose personal information if we are required to do so by law or we in good faith believe that such action is necessary to </p><blockquote><p>(1) comply with the law or with legal process; <br>(2) protect and defend our rights and property; <br>(3) protect against misuse or unauthorized use of NMG websites; or <br>(4) protect the personal safety or property of our users or the public (among other things, this means that if you provide false information or attempt to pose as someone else, information about you may be disclosed as part of any investigation into your actions).</p></blockquote><p><strong><span class="headered">E-Mail:</span></strong> If you so select at registration to receive eNewsletters, NMG websites will periodically send you various types of emails including daily headlines updates and communication regarding your particular interest. Additionally, the email address provided by you at registration may be used by NMG websites to contact you regarding:</p><blockquote><p>(1) account status (including confirmation of registration), <br>(2) major changes to the website and or to the Subscriber Agreement and Privacy Policy, and <br>(3) participation in user surveys, asking for feedback on the website and existing or prospective products and services, as well as information to better understand our users. </p></blockquote><p>User surveys greatly help us to improve our website, and any information we obtain in such surveys will not be shared with third parties, except in aggregate form. </p><p>The E-Mail This Article feature is an easy way for NMG websites users to send articles through email. The e-mail address(es) that you supply to use this service will only be used to send the requested article. </p><p>Except as permitted by this policy, NMG websites does not send unsolicited e-mail.</p><p><strong><span class="headered">Discussion Forums:</span></strong> Any information you disclose when posting a message in our Discussion Forums becomes public. Please refer to our Terms of Use for more information on expected behaviour in the Forum.</p>
+						<BR><BR><BR></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Page - Terms of use -->
+<div data-role="page" id="page-terms" data-theme="c">
+	<div data-role="header" data-theme="c">
+		<h1>Terms of Use</h1>
+		<a href="#page-settings" data-transition="fade" data-direction="reverse" data-role="button" data-icon="arrow-l" data-iconpos="left" data-inline="true" data-theme="c">Back</a>
+	</div>
+	<div data-role="content" data-theme="c">
+		<div class="wrapper">
+			<div>
+				<div class="help-text">
+					<div><p>These terms and conditions apply whenever you access Nationmedia.com, or any other Nation Media Group website. By using any NMG website, you are deemed to have accepted these conditions. </p><p>Some areas and services/functions on NMG websites require registration. By completing the registration form, and by entering your email address, username and password, you will be deemed to have accepted these terms and conditions. Also, by subscribing to any of our email services, you are deemed to have accepted these terms and conditions. Before registering, ensure you read our privacy policy. </p><p>If you have registered with us and subsequently change your details, you should immediately update your profile on our website. To do so, click on Edit profile on our website. </p><p>Any changes we make to the terms and conditions will be reflected on this page. <br> <br><strong><span class="headeredbig">1. Registration</span></strong> <br>When you register, you are registering as a personal user of NMG websites. Access to registration areas is via your Username and password. </p><p>We allow you access to the member’s areas of the site on the basis that: </p><blockquote><p>(i) your email address, username and password are personal to you and may not be used by anyone else. </p><p>(ii) you will not do anything which would assist anyone who is not a registered user to gain access to any members only area of NMG websites. </p><p>(iii) you do not maliciously create additional usernames for the purpose of abusing the functionality of the site, or other users; nor do you seek to pass yourself off as another user by adopting a similar username.</p><p>(iv) you comply with these terms and conditions. </p></blockquote><p>If, for any reason, we believe that you have not complied with these requirements, we may, at our discretion, cancel your access to the members' only areas of NMG websites immediately and without giving you any advance notice. </p><p><strong><span class="headeredbig">2. Termination of registration</span></strong> </p><p>If we wish to bring the agreement to an end, we will do so by emailing you at the address you have registered stating that the agreement has terminated. The agreement will terminate and your user name and password will become invalid immediately. </p><p><strong><span class="headeredbig">3. Use of material appearing on NMG websites</span></strong></p><p>For the purposes of this agreement, "content" means material including, without limitation, text, video, graphics and sound material, published on Nationmedia.com and other Nation Media Group websites, whether copyright Nation Media Group or a third party. </p><p>You may download and print extracts from the content and make copies of these for your own personal and non-commercial use only. You are not allowed to download or print the content, or extracts from it, in a systematic or regular manner or otherwise so as to create a database in electronic or paper form comprising all or part of the material appearing on NMG any website. </p><p>You must not reproduce any part of any NMG website or the content or transmit it to or store it in any other website or disseminate any part of the content in any other form, unless with our direct permission. </p><p>We may be prepared to allow you to distribute or reproduce some parts of our website(s) or the content therein, in certain other circumstances. Please read through our Rights and Permission page for more information. </p><p>If you would like to use content from NMG website(s) on your website, please contact us for permission by sending an email to <a href="mailto:SyndicatedRecipients@nation.co.ke" target="_blank">syndication@ke.nationmedia.com</a></p><p><strong><span class="headeredbig">4. Disclaimer of liability</span></strong> </p><p>To the extent permitted by law, we do not accept any responsibility for any statement in the content. You must not rely on any statement we have published on NMG websites without first taking specialist professional advice. Nothing in the content is provided for any specific purpose or at the request of any particular person. </p><p>For the avoidance of confusion, we will not be liable for any loss caused as a result of your doing, or not doing, anything as a result of viewing, reading or listening to the content or any part of it (except for death or personal injury attributable to our negligence/to the extent permitted at law). </p><p>You can access other sites via links from NMG websites. These sites are not under our control and we are not responsible in any way for any of their content. </p><p>We give no warranties of any kind concerning NMG websites or the content therein. In particular, we do not warrant that Nationmedia.com or any other NMG website is virus free. You must take your own precautions in this respect as we accept no responsibility for any infection by virus or other contamination or by anything which has destructive properties. </p><p><strong><span class="headeredbig">5. Third party material on NMG websites</span></strong> </p><p>You may/will see advertising material submitted by third parties on Nationmedia.com and other NMG websites. Individual advertisers are solely responsible for the content of advertising material which they submit to us, including ensuring that it complies with relevant legislation. We accept no responsibility for the content of advertising material, including, without limitation, any error, omission or inaccuracy therein. </p><p>If you want to advertise on Nationmedia.com, please email <a href="http://www.nationmedia.com/dailynation/makerequest.asp?mailtype=Advertising%20Info">internetsales@nation.co.ke</a>.</p><p><strong><span class="headeredbig">6. Blogs, Letters to the Editor, Readers Comments, Discussion Boards, and Chat</span></strong> </p><p>Users of our site may submit content for publication in various areas of the site, including Blogs, Letters to the Editor and Readers Comments. We accept no liability in respect of any content submitted by users and published by us and we are not responsible for its content and accuracy. </p><p>If you want to submit content to us for publication in the Blogs, Letter to the Editor, Readers Comments, or Discussion Forum you may do so on the following terms and conditions: </p><blockquote><p>(i) publication of any content you submit to us will be at our sole discretion. We reserve the right to make additions or deletions to the text or graphics prior to publication, or to refuse publication. </p><p>(ii) you grant us a non-exclusive, perpetual, royalty-free, worldwide licence to republish any content you submit to us in any format, including without limitation print and electronic format. </p><p>(iii) you warrant to us that any content you submit to us is your own original work and that you own the copyright and any other relevant rights. </p><p>(iv) you warrant that the content you submit is not obscene, offensive, defamatory of any person or otherwise illegal. </p><p>(v) you agree not to post content which is deliberately intended to upset other users. </p><p>(vi) you acknowledge that any breach of these warranties may cause us damage or loss and you agree to indemnify us in full and permanently against any third party liabilities, claims, costs, loss or damage we incur as a result of publishing material you submit to us, including consequential losses. </p><p>(vi) we reserve the right to remove your access to the Discussion Forums, Letters to the Editor, Readers Comments completely if we believe you are abusing them in any way. </p></blockquote><p><strong><span class="headeredbig">7. Data Protection</span></strong> </p><p>If you have indicated on the registration form that you wish to receive direct marketing material, your personal details will be included in a database compiled for direct marketing purposes. From time to time, you may receive direct marketing information from us or from third parties. </p><p>If you have indicated that you wish to receive email updates only from Nationmedia.com, you will receive only updates. </p><p>If you wish to unsubscribe from any of our email services please follow the instructions included in the emails. </p><p><strong><span class="headeredbig">8. Variations</span></strong> </p><p>These terms may be varied from time to time. Please ensure that you review these terms and conditions regularly as you will be deemed to have accepted a variation if you continue to use the site after it has been posted. </p><p><strong><span class="headeredbig">9. Internet Access</span></strong> </p><p>Although we will do our best to provide constant, uninterrupted access to Nationmedia.com and our other websites, we do not guarantee this. We accept no responsibility or liability for any interruption or delay.  </p>
+						<BR><BR><BR><BR></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Page - Settings / Categories -->
+<div id="page-settings-categories" class="page-settings" data-role="page" data-theme="c">
+	<div data-role="header" data-theme="c">
+		<h1>Categories</h1>
+		<a href="#page-settings" data-transition="fade" data-direction="reverse" data-role="button" data-icon="arrow-l" data-iconpos="left" data-inline="true"  data-theme="c">Back</a>
+	</div>
+	<div data-role="content">
+		<div class="wrapper">
+			<div>
+				<form id="categories-form" data-ajax="false">
+				<ul data-role="listview" data-inset="true">
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="News"> News </label>
+						<select name="News" id="News"  data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Politics"> Politics </label>
+						<select name="Politics" id="Politics"  data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-role="slider" data-theme="c" data-mini="true">
+						<label for="Africa"> Africa </label>
+						<select name="Africa" id="Africa"  data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="World"> World </label>
+						<select name="World" id="World"  data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+				</ul>
+				<ul data-role="listview" data-inset="true">
+					<li data-role="list-divider" data-theme="c">
+						Business
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Business"> Business News </label>
+						<select name="Business" id="Business"  data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Corporates"> Corporates </label>
+						<select name="Corporates" id="Corporates" data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Enterprise"> Enterprise </label>
+						<select name="Enterprise" id="Enterprise" data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Markets"> Markets </label>
+						<select name="Markets" id="Markets"  data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Tech"> Tech </label>
+						<select name="Tech" id="Tech" data-role="slider" data-theme="d" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+				</ul>
+				<ul data-role="listview" data-inset="true">
+					<li data-role="list-divider" data-theme="c">
+						Counties
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Nairobi"> Nairobi </label>
+						<select name="Nairobi" id="Nairobi"  data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Mombasa"> Mombasa </label>
+						<select name="Mombasa" id="Mombasa" data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Kisumu"> Kisumu </label>
+						<select name="Kisumu" id="Kisumu"  data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Nakuru"> Nakuru </label>
+						<select name="Nakuru" id="Nakuru"  data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Eldoret"> Eldoret </label>
+						<select name="Eldoret" id="Eldoret"  data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Nyeri"> Nyeri </label>
+						<select name="Nyeri" id="Nyeri"  data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+				</ul>
+				<ul data-role="listview" data-inset="true">
+					<li data-role="list-divider" data-theme="c">
+						Sports
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Football"> Football </label>
+						<select name="Football" id="Football"  data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Athletics"> Athletics </label>
+						<select name="Athletics" id="Athletics" data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Rugby"> Rugby </label>
+						<select name="Rugby" id="Rugby"  data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Golf"> Golf </label>
+						<select name="Golf" id="Golf" data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Others"> Others </label>
+						<select name="Others" id="Others"  data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="TalkUp"> TalkUp </label>
+						<select name="TalkUp" id="TalkUp" data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+				</ul>
+				<ul data-role="listview" data-inset="true">
+					<li data-role="list-divider" data-theme="c">
+						Blogs and Opinion
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Blogs"> Blogs </label>
+						<select name="Blogs" id="Blogs" data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Commentaries"> Commentaries </label>
+						<select name="Commentaries" id="Commentaries" data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Editorials"> Editorials </label>
+						<select name="Editorials" id="Editorials"  data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+				</ul>
+				<ul data-role="listview" data-inset="true">
+					<li data-role="list-divider" data-theme="c">
+						Life and Style
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="ArtCulture"> Art and Culture </label>
+						<select name="ArtCulture" id="ArtCulture" data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Family"> Family </label>
+						<select name="Family" id="Family" data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Health"> Health </label>
+						<select name="Health" id="Health"  data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Showbiz"> Showbiz </label>
+						<select name="Showbiz" id="Showbiz" data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+					<li  data-role="fieldcontain" data-theme="c">
+						<label for="Travel"> Travel </label>
+						<select name="Travel" id="Travel" data-role="slider" data-theme="c" data-mini="true">
+							<option value="off">Off</option>
+							<option value="on" selected="selected">On</option>
+						</select>
+					</li>
+				</ul>
+				</form>
+				<BR>
+				<BR>
+				<BR>
+				<BR>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+</body>
+
+<!-- Pages -->
+<script src="js/page/home.js"></script>
+<script src="js/page/article.js"></script>
+<script src="js/page/photo.js"></script>
+<script src="js/page/video.js"></script>
+<script src="js/page/settings.js"></script>
+<script src="js/page/settings-categories.js"></script>
+<script src="js/page/settings-refreshinterval.js"></script>
+<script src="js/page/settings-textsize.js"></script>
+<script src="js/page/settings-terms.js"></script>
+<script src="js/page/settings-privacy.js"></script>
+<script src="js/page/settings-aboutus.js"></script>
+
+<!-- Initialize app -->
+<script src="js/lib/initialize.js"></script>
+
+</html>
