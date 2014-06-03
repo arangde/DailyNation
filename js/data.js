@@ -126,17 +126,17 @@ var DataCenter = null;
 		expirySeconds: 60,
 
 		categories: {
-			"<i class='fa fa-navicon (alias)'></i> News" : [{ 
-				name : '<i class="fa fa-navicon (alias)"></i> News', 
+			"<i class='fa fa-fax'></i> News" : [{ 
+				name : '<i class="fa fa-fax"></i> News', 
 				url : 'http://dfihluw6z4ymo.cloudfront.net/0/xml/news.xml',
 				//url : 'news.xml',
 				visible : true
 			}, {
-				name : '<i class="fa fa-university"></i> Politics',
+				name : '<i class="fa fa-gavel"></i> Politics',
 				url : 'http://dfihluw6z4ymo.cloudfront.net/0/xml/politics.xml',
 				visible : true
 			}, {
-				name : '<i class="fa fa-paw"></i> Africa',
+				name : '<i class="fa fa-globe"></i> Africa',
 				url : 'http://dfihluw6z4ymo.cloudfront.net/0/xml/africa.xml',
 				visible : true
 			}, {
@@ -144,28 +144,28 @@ var DataCenter = null;
 				url : 'http://dfihluw6z4ymo.cloudfront.net/0/xml/world.xml',
 				visible : true
 			}],
-			"<i class='fa fa-suitcase'></i> Business" : [{
-				name : '<i class="fa fa-suitcase"></i> Business',
+			"<i class='fa fa-bar-chart-o'></i> Business" : [{
+				name : '<i class="fa fa-bar-chart-o"></i> Business',
 				url : 'http://dfihluw6z4ymo.cloudfront.net/0/xml/business.xml',
 				visible : true
 			}, {
-				name : '<i class="fa fa-suitcase"></i> Corporates',
+				name : '<i class="fa fa-university"></i> Corporates',
 				url : 'http://dfihluw6z4ymo.cloudfront.net/0/xml/corporates.xml',
 				visible : true
 			}, {
-				name : '<i class="fa fa-suitcase"></i> Enterprise',
+				name : '<i class="fa fa-share-alt"></i> Enterprise',
 				url : 'http://dfihluw6z4ymo.cloudfront.net/0/xml/enterprise.xml',
 				visible : true
 			}, {
-				name : '<i class="fa fa-suitcase"></i> Markets',
+				name : '<i class="fa fa-users"></i> Markets',
 				url : 'http://dfihluw6z4ymo.cloudfront.net/0/xml/markets.xml',
 				visible : true
 			}, {
-				name : '<i class="fa fa-suitcase"></i> Tech',
+				name : '<i class="fa fa-joomla"></i> Tech',
 				url : 'http://dfihluw6z4ymo.cloudfront.net/0/xml/technology.xml',
 				visible : true
 			}],
-			"<i class='fa fa-plane'></i> Countries" : [{
+			"<i class='fa fa-globe'></i> Countries" : [{
 				name : '<i class="fa fa-globe"></i> Countries',
 				url : 'http://dfihluw6z4ymo.cloudfront.net/0/xml/counties.xml',
 				visible : true
@@ -223,20 +223,20 @@ var DataCenter = null;
 				url : 'http://dfihluw6z4ymo.cloudfront.net/0/xml/talkup.xml',
 				visible : true
 			}],
-			"<i class='fa fa-legal (alias)'></i> Opinion" : [{
-				name : '<i class="fa fa-thumbs-up"></i> Blogs',
+			"<i class='fa fa-bullhorn'></i> Opinion" : [{
+				name : '<i class="fa fa-comments"></i> Blogs',
 				url : 'http://dfihluw6z4ymo.cloudfront.net/0/xml/blogs.xml',
 				visible : true
 			}, {
-				name : '<i class="fa fa-thumbs-up"></i> Commentaries',
+				name : '<i class="fa fa-comments"></i> Commentaries',
 				url : 'http://dfihluw6z4ymo.cloudfront.net/0/xml/commentaries.xml',
 				visible : true
 			}, {
-				name : '<i class="fa fa-thumbs-up"></i> Editorials',
+				name : '<i class="fa fa-file-text"></i> Editorials',
 				url : 'http://dfihluw6z4ymo.cloudfront.net/0/xml/editorials.xml',
 				visible : true
 			}],
-			"<i class='fa fa-heart'></i> Life&Style" : [{
+			"<i class='fa fa-heart'></i> Life & Style" : [{
 				name : '<i class="fa fa-empire"></i> ArtCulture',
 				title: '<i class="fa fa-empire"></i> Art & Culture',
 				url : 'http://dfihluw6z4ymo.cloudfront.net/0/xml/artsculture.xml',
@@ -254,7 +254,7 @@ var DataCenter = null;
 				url : 'http://dfihluw6z4ymo.cloudfront.net/0/xml/showbiz.xml',
 				visible : true
 			}, {
-				name : '<i class="fa fa-truck"></i> Travel',
+				name : '<i class="fa fa-plane"></i> Travel',
 				url : 'http://dfihluw6z4ymo.cloudfront.net/0/xml/travel.xml',
 				visible : true
 			}]
@@ -342,6 +342,7 @@ var DataCenter = null;
 	
 	// parse the server articles xml
 	function parseData(xml) {
+		console.log(xml);
 		var data = {};
 		data.updatedTime = (new Date()).toISOString();
 		data.items = [];
@@ -349,12 +350,16 @@ var DataCenter = null;
 		for (var i = 0; i < items.length; i++) {
 			var itemSrc = $(items[i]);
 			var itemDst = {};
+			itemDst.category = itemSrc.find("parent").text().trim();
+			itemDst.subCategory = itemSrc.find("child").text().trim();
 			itemDst.title = itemSrc.find("title").text().trim();
 			itemDst.language = itemSrc.find("language").text().trim();
-			itemDst.description = itemSrc.find("description").text().trim();
-			itemDst.articleDate = itemSrc.find("articleDate").text().trim();
+			itemDst.description = Util.strip(itemSrc.find("description").text().trim());
+			var dateString = itemSrc.find("articleDate").text().trim();
+			var articleDate = new Date(Date.parse(dateString));
+			itemDst.articleDate = articleDate.toDateString();
 			itemDst.story = itemSrc.find("story").text().trim();
-			itemDst.author = itemSrc.find("author").text().trim();
+			itemDst.author = itemSrc.find("author").text().replace("-1", "").trim();
 			itemDst.link = itemSrc.find("link").text().trim();
 			itemDst.photo = null;
 			var jphoto = itemSrc.find("photo");

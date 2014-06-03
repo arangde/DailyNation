@@ -216,37 +216,37 @@
 		var ret = "";
 		if (type == "home") {
 			ret = "<div class='page type1'>"
-					+ "<article id='article" + (index) + "' class='col0 article article0'><div>" + makeArticle("col2_big", items[0]) + "</div></article>"
+					+ "<article id='article" + (index) + "' class='col0 article full article0'><div>" + makeArticle("col2_big", items[0]) + "</div></article>"
 					+ "<div class='col_split'></div>"
 					+ "<div class='col1'>"
 						+ "<div class='row row0'>"
-							+ "<article id='article" + (index+1) + "' class='article article1'><div>" + makeArticle("simple_bottom", items[1]) + "</div></article>"
+							+ "<article id='article" + (index+1) + "' class='article full article1'><div>" + makeArticle("simple_bottom", items[1]) + "</div></article>"
                             + "<div class='col_split'></div>"
-							+ "<article id='article" + (index+2) + "' class='article article2'><div>" + makeArticle("simple_bottom", items[2]) + "</div></article>"
+							+ "<article id='article" + (index+2) + "' class='article full article2'><div>" + makeArticle("simple_bottom", items[2]) + "</div></article>"
 						+ "</div>"
 						+ "<div class='row_split'></div>"
 						+ "<div class='row row1'>"
-							+ "<article id='article" + (index+3) + "' class='article article3'><div>" + makeArticle("simple_bottom", items[3]) + "</div></article>"
+							+ "<article id='article" + (index+3) + "' class='article full article3'><div>" + makeArticle("simple_bottom", items[3]) + "</div></article>"
                             + "<div class='col_split'></div>"
-							+ "<article id='article" + (index+4) + "' class='article article4'><div>" + makeArticle("simple_bottom", items[4]) + "</div></article>"
+							+ "<article id='article" + (index+4) + "' class='article full article4'><div>" + makeArticle("simple_bottom", items[4]) + "</div></article>"
 						+ "</div>"
 					+ "</div>"
 				+ "</div>";
 		} else if (type == "main") {
 			ret = "<div class='page type2'>"
-					+ "<article id='article" + (index) + "' class='col0 article article0'><div>" + makeArticle("simple_top", items[0]) + "</div></article>"
+					+ "<article id='article" + (index) + "' class='col0 article full article0'><div>" + makeArticle("simple_top", items[0]) + "</div></article>"
 					+ "<div class='col_split'></div>"
 					+ "<div class='col1'>"
 						+ "<div class='row0'>"
-							+ "<article id='article" + (index+1) + "' class='article article1'><div>" + makeArticle("simple_bottom", items[1]) + "</div></article>"
+							+ "<article id='article" + (index+1) + "' class='article full article1'><div>" + makeArticle("simple_bottom", items[1]) + "</div></article>"
 							+ "<div class='col_split'></div>"
-							+ "<article id='article" + (index+2) + "' class='article article2'><div>" + makeArticle("simple_bottom", items[2]) + "</div></article>"
+							+ "<article id='article" + (index+2) + "' class='article full article2'><div>" + makeArticle("simple_bottom", items[2]) + "</div></article>"
 						+ "</div>"
 						+ "<div class='row_split'></div>"
-						+ "<article id='article" + (index+3) + "' class='row1 article article3'><div>" + makeArticle("col2_right", items[3]) + "</div></article>"
+						+ "<article id='article" + (index+3) + "' class='row1 article full article3'><div>" + makeArticle("col2_right", items[3]) + "</div></article>"
 					+ "</div>"
 					+ "<div class='col_split'></div>"
-					+ "<article id='article" + (index+4) + "' class='col2 article article4'><div>" + makeArticle("simple_top", items[4]) + "</div></article>"
+					+ "<article id='article" + (index+4) + "' class='col2 article full article4'><div>" + makeArticle("simple_top", items[4]) + "</div></article>"
 				+ "</div>";
 		}
 		ret = ret.replace(/<article /g, "<article onmousedown='onArticleMouseDown.call(this, event)' ontouchstart='onArticleTouchStart.call(this, event)' ");
@@ -263,7 +263,7 @@
 		if (item.author != "") {
 			vContent += "<div class='author'>By " + item.author.toUpperCase() + "</div>";
 		}
-		vContent += "<div class='datee'>" + item.articleDate + "</div>" + item.story + "</div>";
+		vContent += "<div class='datee'>" + item.articleDate + "</div><div class='story'" + item.story + "</div></div>";
 		var vPhoto = "";
 		if (item.photo != null) {
 			vPhoto= "<center'><img src='" + item.photo.path + "' width='IMAGE-WIDTH'></center>";
@@ -378,7 +378,8 @@
 
 	function applyArticle(item) {
 		var ret = "";
-		find(".categoryy").html("&nbsp;" + app.getPage("page-home").getCurrentCategory() + "&nbsp;") 
+		find(".categoryy").html("&nbsp;" + app.getPage("page-home").getCurrentCategory() + "&nbsp;");
+		find(".subcategory").html(item.subCategory.toUpperCase());
 		find(".titlee").html(item.title);
 		if (item.photo != null) {
 			var img = find(".photo img")[0];

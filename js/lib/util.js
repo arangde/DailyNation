@@ -61,6 +61,13 @@ var Util = null;
 				script.onload = onReady;
 			}
 			document.documentElement.appendChild(script);
+		},
+
+		// remove all html tags
+		strip : function(html) {
+		   var tmp = document.createElement("DIV");
+		   tmp.innerHTML = html;
+		   return tmp.textContent || tmp.innerText || "";
 		}
 	};
 

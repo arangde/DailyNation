@@ -85,7 +85,9 @@
 				}
 				$("#popup-sections .category-title").html(name);
 				$("#popup-sections .sub-list > div").html(html);
-				$("#popup-sections .sub-list-container").css("left", 0);
+				$("#popup-sections .sub-list-container").show();
+				$("#popup-sections .sub-list-container").css("left", "14rem");
+
 				iscrollSections.refresh();
 				UiUtil.addTapListener($("#popup-sections .sub-list > div > div"), function() {
 					page.onGoSection(this.id);
@@ -114,7 +116,7 @@
 		return page.find(s);
 	}
 
-	var currentCategory = '<i class="fa fa-navicon (alias)"></i> News';
+	var currentCategory = '<i class="fa fa-fax"></i> News';
 	var pager = null;
 	var flagLoading = false;
 	var articles = [];
@@ -171,6 +173,42 @@
 		html += "</div>";
 		find(".articles").html(html);
 
+		find(".articles .article_simple_bottom").each(function() {
+
+			if($(this).find(".article_photo").length > 0) {
+				var article_h = $(this).parents("article").height();
+				var article_w = $(this).width();
+				var title_h = $(this).find(".title").height() + 5;
+				var content_h = $(this).find(".content").height() + 15;
+				var photo_h = article_h - title_h - content_h;
+
+				$(this).height(photo_h);
+
+				var photo = $(this).find(".article_photo img");
+				photo.height(photo_h);
+				photo.css("width", "auto");
+				/*
+				photo.onload = function() {
+					console.log(photo);
+					var photo_r = photo.clientHeight / photo.clientWidth;
+					console.log(photo.height);
+					console.log(photo.width);
+					console.log(photo_r);
+					if(photo_h > article_w * photo_r) {
+						$(this).height(article_w * photo_r);
+						$(this).css("width", "auto");
+					}
+					else {
+						$(this).css("height", "auto");
+						$(this).width(article_w);
+					}
+				};
+				*/
+
+				
+			}
+		});
+
 		pager = find(".articles > div.pager").fotorama({
 			width: width,
 			height: height - 30,
@@ -183,38 +221,39 @@
 	function makeArticlePage(type, items, index) {
 		var ret = "";
 		if (type == "home") {
+			console.log(items[0]);
 			ret = "<div class='page type1'>"
-					+ "<article id='article" + (index) + "' class='col0 article article0'><div>" + makeArticle("col2_big", items[0]) + "</div></article>"
+					+ "<article id='article" + (index) + "' class='col0 article preview article0'><div>" + makeArticle("col2_big", items[0]) + "</div></article>"
 					+ "<div class='col_split'></div>"
 					+ "<div class='col1'>"
 						+ "<div class='row row0'>"
-							+ "<article id='article" + (index+1) + "' class='article article1'><div>" + makeArticle("simple_bottom", items[1]) + "</div></article>"
+							+ "<article id='article" + (index+1) + "' class='article preview article1'><div>" + makeArticle("simple_bottom", items[1]) + "</div></article>"
                             + "<div class='col_split'></div>"
-							+ "<article id='article" + (index+2) + "' class='article article2'><div>" + makeArticle("simple_bottom", items[2]) + "</div></article>"
+							+ "<article id='article" + (index+2) + "' class='article preview article2'><div>" + makeArticle("simple_bottom", items[2]) + "</div></article>"
 						+ "</div>"
 						+ "<div class='row_split'></div>"
 						+ "<div class='row row1'>"
-							+ "<article id='article" + (index+3) + "' class='article article3'><div>" + makeArticle("simple_bottom", items[3]) + "</div></article>"
+							+ "<article id='article" + (index+3) + "' class='article preview article3'><div>" + makeArticle("simple_bottom", items[3]) + "</div></article>"
                             + "<div class='col_split'></div>"
-							+ "<article id='article" + (index+4) + "' class='article article4'><div>" + makeArticle("simple_bottom", items[4]) + "</div></article>"
+							+ "<article id='article" + (index+4) + "' class='article preview article4'><div>" + makeArticle("simple_bottom", items[4]) + "</div></article>"
 						+ "</div>"
 					+ "</div>"
 				+ "</div>";
 		} else if (type == "main") {
 			ret = "<div class='page type2'>"
-					+ "<article id='article" + (index) + "' class='col0 article article0'><div>" + makeArticle("simple_top", items[0]) + "</div></article>"
+					+ "<article id='article" + (index) + "' class='col0 article preview article0'><div>" + makeArticle("simple_top", items[0]) + "</div></article>"
 					+ "<div class='col_split'></div>"
 					+ "<div class='col1'>"
 						+ "<div class='row0'>"
-							+ "<article id='article" + (index+1) + "' class='article article1'><div>" + makeArticle("simple_bottom", items[1]) + "</div></article>"
+							+ "<article id='article" + (index+1) + "' class='article preview article1'><div>" + makeArticle("simple_bottom", items[1]) + "</div></article>"
 							+ "<div class='col_split'></div>"
-							+ "<article id='article" + (index+2) + "' class='article article2'><div>" + makeArticle("simple_bottom", items[2]) + "</div></article>"
+							+ "<article id='article" + (index+2) + "' class='article preview article2'><div>" + makeArticle("simple_bottom", items[2]) + "</div></article>"
 						+ "</div>"
 						+ "<div class='row_split'></div>"
-						+ "<article id='article" + (index+3) + "' class='row1 article article3'><div>" + makeArticle("col2_right", items[3]) + "</div></article>"
+						+ "<article id='article" + (index+3) + "' class='row1 article preview article3'><div>" + makeArticle("col2_right", items[3]) + "</div></article>"
 					+ "</div>"
 					+ "<div class='col_split'></div>"
-					+ "<article id='article" + (index+4) + "' class='col2 article article4'><div>" + makeArticle("simple_top", items[4]) + "</div></article>"
+					+ "<article id='article" + (index+4) + "' class='col2 article preview article4'><div>" + makeArticle("simple_top", items[4]) + "</div></article>"
 				+ "</div>";
 		}
 		ret = ret.replace(/<article /g, "<article onmousedown='onArticleMouseDown.call(this, event)' ontouchstart='onArticleTouchStart.call(this, event)' ");
@@ -226,15 +265,15 @@
 		}
 		var ret = "";
 		var vStart = "<div class='article_" + type + "'><div class='title'>" + item.title + "</div>";
-		var vEnd = "</div><br><br><br><br><br><br>";
-		var vContent = "<div class='content'>";
+		var vEnd = "</div>";
+		var vContent = "<div class='content'><div class='desc'>";
 		if (item.author != "") {
-			vContent += "<div class='author'>By " + item.author.toUpperCase() + "</div>";
+			vContent += "<span class='author'>By " + item.author.toUpperCase() + ", </span>";
 		}
-		vContent += "<div class='date'>" + item.articleDate + "</div>" + item.story + "</div>";
+		vContent += "<span class='date'>" + item.articleDate + "</span></div>" + item.description + "</div>";
 		var vPhoto = "";
 		if (item.photo != null) {
-			vPhoto= "<center'><img src='" + item.photo.path + "' width='IMAGE-WIDTH'></center>";
+			vPhoto= "<div class='article_photo'><img src='" + item.photo.path + "' width='IMAGE-WIDTH'></div>";
 		}
 		if (type == "col2_big") {
 			vPhoto = vPhoto.replace("IMAGE-WIDTH", "90%");
@@ -261,22 +300,31 @@
 		var categories = app.data.getSectionCategories();
 		for (var i = 0; i < categories.length; i++) {
 			var category = categories[i];
-			html += '<div id="' + category + '" class="category">' + category + '</div>';
+			html += '<div id="' + category + '" class="category">' + category
+				 + '<div class="popup-indicator"></div>'
+				 + '</div>';
 		}
 		list.html(html);
 		$("#popup-sections").on("popupafteropen", function() {
 			iscrollCategories.refresh();
 		});
 		$("#popup-sections").on("popupafterclose", function() {
-			$("#popup-sections .sub-list-container").css("left", "23rem");
+			$("#popup-sections .sub-list-container").css("left", "15rem");
+			$("#popup-sections .sub-list-container").hide();
+			$("#popup-sections .popup-indicator").hide();
 		});
 
 		UiUtil.addTapListener($("#popup-sections .list > div > div"), function() {
 			page.onGoCategory(this.id);
+
+			$("#popup-sections .popup-indicator").hide();
+			$(this).find(".popup-indicator").show();
 		}, 3);
 
 		$("#popup-sections .sub-list-container").on("tap", function() {
-			$("#popup-sections .sub-list-container").css("left", "23rem");
+			$("#popup-sections .sub-list-container").css("left", "15rem");
+			$("#popup-sections .sub-list-container").hide();
+			$("#popup-sections .popup-indicator").hide();
 		});
 	}
 
