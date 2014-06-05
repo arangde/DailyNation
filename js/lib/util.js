@@ -68,6 +68,14 @@ var Util = null;
 		   var tmp = document.createElement("DIV");
 		   tmp.innerHTML = html;
 		   return tmp.textContent || tmp.innerText || "";
+		},
+
+		cutLen : function(str, len) {
+			if(str.length > len) {
+				str = str.substring(0, len);
+				str = str + " ...";
+			}
+			return str;
 		}
 	};
 

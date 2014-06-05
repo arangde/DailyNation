@@ -34,7 +34,7 @@
 			find(".ui-content").outerHeight(heightWindow - heightHeader - heightFooter - 45);
 			refreshBodySize();
 		},
-
+/*
 		// Update Button on Sections Popup
 		"$tap:#popup-sections .update": function() {
 			updateArticles(true);
@@ -87,7 +87,7 @@
 			updateArticles();
 			$("#popup-sections").popup("close");
 		},
-
+*/
 		// get current category
 		getCurrentCategory: function() {
 			return currentCategory;
@@ -162,7 +162,7 @@
 		var strDate = date.toDateString();
 		find(".ui-header .date").html(strDate);
 	}
-
+/*
 	function updateArticles(flagUpdate) {
 		flagLoading = true;
 		$.mobile.showPageLoadingMsg();
@@ -284,7 +284,7 @@
 		}
 		return ret;
 	}
-
+*/
 	var iscrollCategories = new iScroll($("#popup-sections .list")[0], {useTransition: true, hScrollbar:false, vScrollbar: false});
 	var iscrollSections = new iScroll($("#popup-sections .sub-list")[0], {useTransition: true, hScrollbar:false, vScrollbar: false});
 	function addSections() {

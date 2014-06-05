@@ -342,7 +342,6 @@ var DataCenter = null;
 	
 	// parse the server articles xml
 	function parseData(xml) {
-		console.log(xml);
 		var data = {};
 		data.updatedTime = (new Date()).toISOString();
 		data.items = [];

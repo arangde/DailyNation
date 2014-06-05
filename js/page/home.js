@@ -221,7 +221,6 @@
 	function makeArticlePage(type, items, index) {
 		var ret = "";
 		if (type == "home") {
-			console.log(items[0]);
 			ret = "<div class='page type1'>"
 					+ "<article id='article" + (index) + "' class='col0 article preview article0'><div>" + makeArticle("col2_big", items[0]) + "</div></article>"
 					+ "<div class='col_split'></div>"
@@ -270,23 +269,31 @@
 		if (item.author != "") {
 			vContent += "<span class='author'>By " + item.author.toUpperCase() + ", </span>";
 		}
-		vContent += "<span class='date'>" + item.articleDate + "</span></div>" + item.description + "</div>";
+		
 		var vPhoto = "";
 		if (item.photo != null) {
-			vPhoto= "<div class='article_photo'><img src='" + item.photo.path + "' width='IMAGE-WIDTH'></div>";
+			vPhoto = "<div class='article_photo'><img src='" + item.photo.path + "'></div>";
 		}
 		if (type == "col2_big") {
-			vPhoto = vPhoto.replace("IMAGE-WIDTH", "90%");
+			var txtlen = 420;
+			if(vPhoto == "")
+				txtlen = 2500;
+			vContent += "<span class='date'>" + item.articleDate + "</span></div>" + Util.cutLen(item.story, txtlen) + "</div>";
 			ret = vStart + vPhoto + vContent + vEnd;
 		} else if (type == "simple_bottom") {
-			vPhoto = vPhoto.replace("IMAGE-WIDTH", "90%");
-			ret = vStart + vContent + vPhoto + vEnd;
+			vContent += "<span class='date'>" + item.articleDate + "</span></div>" + Util.cutLen(item.story, 400) + "</div>";
+			ret = vStart + vContent + vEnd;
 		} else if (type == "simple_top") {
-			vPhoto = vPhoto.replace("IMAGE-WIDTH", "90%");
+			var txtlen = 680;
+			if(vPhoto == "")
+				txtlen = 1080;
+			vContent += "<span class='date'>" + item.articleDate + "</span></div>" + Util.cutLen(item.story, txtlen) + "</div>";
 			ret = vStart + vPhoto + vContent + vEnd;
 		} else if (type == "col2_right") {
-			vPhoto = vPhoto.replace("IMAGE-WIDTH", "50%");
-			vPhoto = vPhoto.replace("img ", "img style='float:right' ");
+			var txtlen = 480;
+			if(vPhoto == "")
+				txtlen = 700;
+			vContent += "<span class='date'>" + item.articleDate + "</span></div>" + Util.cutLen(item.story, txtlen) + "</div>";
 			ret = vStart + vPhoto + vContent + vEnd;
 		}
 		return ret;
