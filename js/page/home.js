@@ -173,41 +173,23 @@
 		html += "</div>";
 		find(".articles").html(html);
 
-		find(".articles .article_simple_bottom").each(function() {
+		/*
+		find("#page-home .articles .article_photo").each(function() {
 
-			if($(this).find(".article_photo").length > 0) {
+			if($(this).find("img").length > 0) {
 				var article_h = $(this).parents("article").height();
 				var article_w = $(this).width();
 				var title_h = $(this).find(".title").height() + 5;
 				var content_h = $(this).find(".content").height() + 15;
 				var photo_h = article_h - title_h - content_h;
 
-				$(this).height(photo_h);
-
-				var photo = $(this).find(".article_photo img");
-				photo.height(photo_h);
-				photo.css("width", "auto");
-				/*
-				photo.onload = function() {
-					console.log(photo);
-					var photo_r = photo.clientHeight / photo.clientWidth;
-					console.log(photo.height);
-					console.log(photo.width);
-					console.log(photo_r);
-					if(photo_h > article_w * photo_r) {
-						$(this).height(article_w * photo_r);
-						$(this).css("width", "auto");
-					}
-					else {
-						$(this).css("height", "auto");
-						$(this).width(article_w);
-					}
-				};
-				*/
-
+				
+				var photo = $(this).find("img");
+				console.log(photo.height());
 				
 			}
 		});
+		*/
 
 		pager = find(".articles > div.pager").fotorama({
 			width: width,
@@ -274,8 +256,9 @@
 		if (item.photo != null) {
 			vPhoto = "<div class='article_photo'><img src='" + item.photo.path + "'></div>";
 		}
+
 		if (type == "col2_big") {
-			var txtlen = 420;
+			var txtlen = 400;
 			if(vPhoto == "")
 				txtlen = 2500;
 			vContent += "<span class='date'>" + item.articleDate + "</span></div>" + Util.cutLen(item.story, txtlen) + "</div>";
@@ -284,7 +267,7 @@
 			vContent += "<span class='date'>" + item.articleDate + "</span></div>" + Util.cutLen(item.story, 400) + "</div>";
 			ret = vStart + vContent + vEnd;
 		} else if (type == "simple_top") {
-			var txtlen = 680;
+			var txtlen = 560;
 			if(vPhoto == "")
 				txtlen = 1080;
 			vContent += "<span class='date'>" + item.articleDate + "</span></div>" + Util.cutLen(item.story, txtlen) + "</div>";
